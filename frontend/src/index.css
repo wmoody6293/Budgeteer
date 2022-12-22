@@ -83,26 +83,23 @@ h3 {
 }
 
 .heading p {
-  color: #72966f;
+  color: #828282;
 }
-.heading p strong {
-  color: #2c5a27;
-  text-decoration: underline;
-}
-.expense {
+
+.goals {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 
-.expense {
+.goal {
   background-color: #f4f4f4;
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
 }
 
-.expense .close {
+.goal .close {
   position: absolute;
   top: 10px;
   right: 15px;

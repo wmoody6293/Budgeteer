@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { FaUser } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+
 function Register() {
   const [formData, setFormData] = useState({
     name: '',
@@ -7,15 +8,14 @@ function Register() {
     password: '',
     password2: '',
   });
-  const { name, email, password, password2 } = formData;
 
+  const { name, email, password, password2 } = formData;
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-
   const onSubmit = (e) => {
     e.preventDefault();
   };
@@ -24,13 +24,9 @@ function Register() {
     <>
       <section className="heading">
         <h1>
-          <FaUser />
-          Register
+          <FaUser /> Register
         </h1>
-        <p>
-          Create an account and start <strong>saving </strong>
-          today
-        </p>
+        <p>Please create an account</p>
       </section>
       <section className="form">
         <form onSubmit={onSubmit}>
@@ -41,18 +37,18 @@ function Register() {
               id="name"
               name="name"
               value={name}
-              placeholder="Brad Smith"
+              placeholder="Billy Bob"
               onChange={onChange}
             />
           </div>
           <div className="form-group">
             <input
-              type="email"
+              type="text"
               className="form-control"
               id="email"
               name="email"
               value={email}
-              placeholder="xyz897@gmail.com"
+              placeholder="1234-I-declare-a-thumb-war@gmail.com"
               onChange={onChange}
             />
           </div>
@@ -63,7 +59,7 @@ function Register() {
               id="password"
               name="password"
               value={password}
-              placeholder="password"
+              placeholder="Enter your secret password here... We won't peek. Probably."
               onChange={onChange}
             />
           </div>
@@ -74,7 +70,7 @@ function Register() {
               id="password2"
               name="password2"
               value={password2}
-              placeholder="confirm password"
+              placeholder="Confirm your password...We definitely don't know it"
               onChange={onChange}
             />
           </div>

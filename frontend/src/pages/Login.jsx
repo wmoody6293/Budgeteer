@@ -6,15 +6,14 @@ function Login() {
     email: '',
     password: '',
   });
-  const { email, password } = formData;
 
+  const { name, email, password, password2 } = formData;
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-
   const onSubmit = (e) => {
     e.preventDefault();
   };
@@ -23,23 +22,22 @@ function Login() {
     <>
       <section className="heading">
         <h1>
-          <FaSignInAlt />
-          Register
+          <FaSignInAlt /> Login
         </h1>
         <p>
-          Login and start <strong>saving </strong>
+          Login and start <strong>saving</strong> today!
         </p>
       </section>
       <section className="form">
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
-              type="email"
+              type="text"
               className="form-control"
               id="email"
               name="email"
               value={email}
-              placeholder="xyz897@gmail.com"
+              placeholder="1234-I-declare-a-thumb-war@gmail.com"
               onChange={onChange}
             />
           </div>
@@ -50,7 +48,7 @@ function Login() {
               id="password"
               name="password"
               value={password}
-              placeholder="password"
+              placeholder="Enter your secret password here... We won't peek. Probably."
               onChange={onChange}
             />
           </div>
@@ -64,5 +62,4 @@ function Login() {
     </>
   );
 }
-
 export default Login;

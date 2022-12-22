@@ -5,19 +5,17 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">Will's BudgetApp</Link>
+        <Link to="/">Expense Form</Link>
       </div>
       <ul>
         <li>
           <Link to="/login">
-            <FaSignInAlt />
-            Login
+            <FaSignInAlt /> Login
           </Link>
         </li>
         <li>
           <Link to="/register">
-            <FaUser />
-            Register
+            <FaUser /> Register
           </Link>
         </li>
       </ul>
