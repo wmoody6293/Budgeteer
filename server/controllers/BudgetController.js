@@ -1,9 +1,11 @@
 const asyncHandler = require('express-async-handler');
 const Expense = require('../models/expenseModel');
+const User = require('../models/userModel');
 //This will retrieve expenses from database
 //Route is GET /api
 const getExpenses = asyncHandler(async (req, res) => {
-  const expenses = await Expense.find();
+  //req.user.id came from authMiddleware func
+  const expenses = await Expense.find({ user: req.user.id });
 
   res.status(200).json(expenses);
 });
@@ -20,6 +22,7 @@ const setExpenses = asyncHandler(async (req, res) => {
     date: req.body.date,
     category: req.body.category,
     amount: req.body.amount,
+    user: req.user.id,
   });
   res.status(200).json(expense);
 });
@@ -32,14 +35,15 @@ const updateExpense = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('Expense not found');
   }
+  const user = await User.findById(req.user.id);
   // Check for user
-  if (!req.user) {
+  if (!user) {
     res.status(401);
     throw new Error('User not found');
   }
 
   // Make sure the logged in user matches the expense user
-  if (expense.user.toString() !== req.user.id) {
+  if (expense.user.toString() !== user.id) {
     res.status(401);
     throw new Error('User not authorized');
   }
@@ -63,14 +67,15 @@ const deleteExpense = asyncHandler(async (req, res) => {
     throw new Error('Expense not found');
   }
 
+  const user = await User.findById(req.user.id);
   // Check for user
-  if (!req.user) {
+  if (!user) {
     res.status(401);
     throw new Error('User not found');
   }
 
   // Make sure the logged in user matches the expense user
-  if (expense.user.toString() !== req.user.id) {
+  if (expense.user.toString() !== user.id) {
     res.status(401);
     throw new Error('User not authorized');
   }
