@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { login, reset } from '../features/auth/authSlice';
+import Spinner from '../components/Spinner';
+import { FaUser } from 'react-icons/fa';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -7,7 +13,28 @@ function Login() {
     password: '',
   });
 
-  const { name, email, password, password2 } = formData;
+  const { email, password } = formData;
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      console.log('error in useEffect');
+      toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate('/');
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  //array above are all things redux watches and if any of them change, it fires off
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -16,7 +43,18 @@ function Login() {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+
+    dispatch(login(userData));
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
