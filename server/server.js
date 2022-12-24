@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/report', require('./routes/budgetRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/budget', require('./routes/budgetTotalRoutes'));
 
 app.listen(8000, () => {
   console.log('server started on port 8000');
