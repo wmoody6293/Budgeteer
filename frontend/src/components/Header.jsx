@@ -11,7 +11,7 @@ function Header() {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate('/');
+    navigate('/login');
   };
   return (
     <header className="header">
@@ -30,7 +30,8 @@ function Header() {
           <>
             <li>
               <Link to="/login">
-                <FaSignInAlt /> Login
+                <FaSignInAlt />
+                Login
               </Link>
             </li>
             <li>

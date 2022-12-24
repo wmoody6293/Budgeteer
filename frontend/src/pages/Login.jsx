@@ -60,7 +60,8 @@ function Login() {
     <>
       <section className="heading">
         <h1>
-          <FaSignInAlt /> Login
+          <FaSignInAlt />
+          Login
         </h1>
         <p>
           Login and start <strong>saving</strong> today!

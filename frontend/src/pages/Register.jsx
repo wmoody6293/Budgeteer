@@ -65,9 +65,12 @@ function Register() {
     <>
       <section className="heading">
         <h1>
-          <FaUser /> Register
+          <FaUser />
+          Register
         </h1>
-        <p>Please create an account</p>
+        <p>
+          Create an account and start <strong>saving</strong> today!
+        </p>
       </section>
       <section className="form">
         <form onSubmit={onSubmit}>
@@ -78,7 +81,7 @@ function Register() {
               id="name"
               name="name"
               value={name}
-              placeholder="Billy Bob"
+              placeholder="Provide your broke ass name"
               onChange={onChange}
             />
           </div>
@@ -89,7 +92,7 @@ function Register() {
               id="email"
               name="email"
               value={email}
-              placeholder="1234-I-declare-a-thumb-war@gmail.com"
+              placeholder="codesmithRules@gmail.com"
               onChange={onChange}
             />
           </div>
@@ -100,7 +103,7 @@ function Register() {
               id="password"
               name="password"
               value={password}
-              placeholder="Enter your secret password here... We won't peek. Probably."
+              placeholder="Enter your secret password here... We won't peek. Probably..."
               onChange={onChange}
             />
           </div>
@@ -111,7 +114,7 @@ function Register() {
               id="password2"
               name="password2"
               value={password2}
-              placeholder="Confirm your password...We definitely don't know it"
+              placeholder="Confirm your password...if you dare"
               onChange={onChange}
             />
           </div>

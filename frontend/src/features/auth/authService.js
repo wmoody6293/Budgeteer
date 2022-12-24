@@ -32,6 +32,10 @@ const login = async (userData) => {
 };
 
 const logout = () => {
+  console.log(
+    'This is localstorage inside logout func in authService.js: ',
+    localStorage
+  );
   localStorage.removeItem('user');
 };
 

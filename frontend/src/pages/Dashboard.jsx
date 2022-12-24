@@ -34,6 +34,7 @@ function Dashboard() {
     console.log(
       'About to dispatch getExpenses() in useEffect in Dashboard.jsx'
     );
+
     dispatch(getExpenses());
     console.log('About to dispatch reset inside useEffect in Dashboard.jsx');
     dispatch(reset());
@@ -43,17 +44,18 @@ function Dashboard() {
     e.preventDefault();
 
     setDisplayBudgetTotal(budgetTotal);
-    setRemaining(budgetTotal - TotalExpense);
+    setRemaining(budgetTotal - totalExpenses);
     setBudgetTotal('');
   };
+
   if (isLoading) {
     return <Spinner />;
   }
   return (
     <>
       <section className="heading">
-        <h1>Welcome {user && user.name}</h1>
-        <h2>Budgeteer Dashboard</h2>
+        <h1>Welcome {user && user.name}!</h1>
+        <h2>Here's Your Budgeteer Dashboard</h2>
       </section>
 
       <section className="main-area">
@@ -80,7 +82,7 @@ function Dashboard() {
         <div className="allVals">
           <div className="budgetTotal">
             <h1 className="ViewLabel">Budget Total:</h1>
-            <h1 className="ViewLabel">{totalBudget}</h1>
+            <h1 className="ViewLabel">{displayBudgetTotal}</h1>
           </div>
           <div className="budgetTotal">
             <h1 className="ViewLabel">Total Expenses:</h1>

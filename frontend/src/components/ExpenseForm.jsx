@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createExpense } from '../features/expenses/expenseSlice';
+import { createExpense, getExpenses } from '../features/expenses/expenseSlice';
 function ExpenseForm() {
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('');
@@ -26,6 +26,7 @@ function ExpenseForm() {
             name="date"
             id="date"
             value={date}
+            placeholder="MM/DD/YYYY"
             onChange={(e) => setDate(e.target.value)}
           ></input>
           <label htmlFor="category">Expense Category:</label>
@@ -34,6 +35,7 @@ function ExpenseForm() {
             name="category"
             id="category"
             value={category}
+            placeholder="example: utilities"
             onChange={(e) => setCategory(e.target.value)}
           ></input>
           <label htmlFor="amount">Expense Amount:</label>
@@ -42,6 +44,7 @@ function ExpenseForm() {
             name="amount"
             id="amount"
             value={amount}
+            placeholder="$"
             onChange={(e) => setAmount(e.target.value)}
           ></input>
         </div>
